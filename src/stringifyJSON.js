@@ -5,10 +5,10 @@
 var stringifyJSON = function(obj) {
  // account for obj isn't an object (string, number, boolean)
 	if(typeof obj !== "object" || obj === null){
-	  	if(typeof obj === "string"){
-	  		return obj = '"'+obj+'"';
-	  	}
-	  	return String(obj);
+	  if(typeof obj === "string"){
+	    obj = '"'+obj+'"';
+	  }
+	  return String(obj);
     }
     
 	// if obj is an array 
@@ -17,13 +17,13 @@ var stringifyJSON = function(obj) {
 	    for(var i=0; i<obj.length;i++){
 		  var item = obj[i];
 		  if(typeof item !== "object" || item === null){
-		  	if(typeof item === "string"){
+		    if(typeof item === "string"){
 		      item = '"' + item + '"';
 		    }
 		    else if(typeof item === undefined || typeof item === "function")
 		    item = String(item);
 		  }
-		  
+
 		  else if(typeof item !== null && typeof item === "object"){
 		    item = stringifyJSON(item);
 		  }
@@ -34,14 +34,14 @@ var stringifyJSON = function(obj) {
 	// if obj is an object
 	else {
 	  var newObj = [];
- 	  for(var key in obj){
+	  for(var key in obj){
 	    var value = obj[key];
 	    if(typeof value !== "object" || value === null){
 		  if(typeof value === "string"){
-		  	value = '"'+value+'"';
+		    value = '"'+value+'"';
 		  }
 		  else if(typeof value === undefined || typeof value === "function"){
-		  	return "{}";
+		    return "{}";
 		  }
 		  value = String(value);
 		}
@@ -51,8 +51,8 @@ var stringifyJSON = function(obj) {
 		newObj.push('"'+key+'":'+value);
 	  }
 	  return "{" + newObj + "}";
-	};
-}; 
+	}
+};  
 
 
 
