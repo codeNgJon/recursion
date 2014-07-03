@@ -19,7 +19,7 @@ var getElementsByClassName = function(className){
 		    }
 		  }
 	    if(node.childNodes){
-	  	  checkChild(node.childNodes);
+	      checkChild(node.childNodes);
 	    }
 	  }
     }
